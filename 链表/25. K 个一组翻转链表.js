@@ -1,21 +1,8 @@
 
-const print_node = require('../node').print_node
-const ListNode = require('../node').ListNode
-const creat_node = require('../node').creat_node
+const print_node = require('./ListNode').print_node
+const ListNode = require('./ListNode').ListNode
+const creat_node = require('./ListNode').creat_node
 
-
-
-const myReverse = (head, tail) => {
-    let prev = tail.next;
-    let p = head;
-    while (prev !== tail) {
-        const nex = p.next;
-        p.next = prev;
-        prev = p;
-        p = nex;
-    }
-    return [tail, head];
-}
 
 /**
  * https://leetcode.cn/problems/reverse-nodes-in-k-group/
@@ -28,6 +15,18 @@ const myReverse = (head, tail) => {
  * @param {*} k 
  * @returns 
  */
+
+const myReverse = (head, tail) => {
+    let prev = tail.next;
+    let p = head;
+    while (prev !== tail) {
+        const nex = p.next;
+        p.next = prev;
+        prev = p;
+        p = nex;
+    }
+    return [tail, head];
+}
 var reverseKGroup = function(head, k) {
     const hair = new ListNode(0);
     hair.next = head;
@@ -54,11 +53,8 @@ var reverseKGroup = function(head, k) {
 };
 
 
-
-
-
-let node = creat_node([1,2,3,4,5]);
-print_node(reverseKGroup(node,2));
+let node = creat_node([1, 2, 3, 4, 5]);
+print_node(reverseKGroup(node, 2));
 
 
 

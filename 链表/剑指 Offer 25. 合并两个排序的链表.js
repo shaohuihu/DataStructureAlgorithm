@@ -1,7 +1,7 @@
 
-const print_node = require('../node').print_node
-const ListNode = require('../node').ListNode
-const creat_node = require('../node').creat_node
+const print_node = require('./ListNode').print_node
+const ListNode = require('./ListNode').ListNode
+const creat_node = require('./ListNode').creat_node
 
 
 
@@ -34,11 +34,7 @@ var mergeTwoLists = function(l1, l2) {
     //这里需要一个tmp节点保存哑结点，用来遍历链表
     let temp = new_head;
 
-
-
-    
     while(l1 && l2){
-
         //注意这里是谁小,temp.next指向谁，指向后该节点进行next
         if(l1.val <= l2.val){
             temp.next = l1;
@@ -50,25 +46,19 @@ var mergeTwoLists = function(l1, l2) {
 
         temp = temp.next;
     }
-
-
     //这里判断剩余的，没有遍历完的节点
     if(l1){
         temp.next = l1;
     }
-
     if(l2){
         temp.next = l2;
     }
-
     return new_head.next;
-
-
 };
 
-let l1 = creat_node([1,2,4]);
-let l2 = creat_node([1,3,4]);
-print_node(mergeTwoLists(l1,l2));
+let l1 = creat_node([1, 2, 4]);
+let l2 = creat_node([1, 3, 4]);
+print_node(mergeTwoLists(l1, l2));
 
 
 

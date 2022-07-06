@@ -1,7 +1,7 @@
 
-const print_node = require('../node').print_node
-const ListNode = require('../node').ListNode
-const creat_node = require('../node').creat_node
+const print_node = require('./ListNode').print_node
+const ListNode = require('./ListNode').ListNode
+const creat_node = require('./ListNode').creat_node
 
 
 /**
@@ -34,8 +34,8 @@ var getIntersectionNode = function(headA, headB) {
 
 
 
-l1 = creat_node([1,2,3,4,5]);
-l2 = creat_node([1,2,3,4,5]);
+l1 = creat_node([1, 2, 3, 4, 5]);
+l2 = creat_node([1, 2, 3, 4, 5]);
 
 print_node(getIntersectionNode(l1,l2));
 

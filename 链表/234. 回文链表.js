@@ -1,7 +1,7 @@
 
-const print_node = require('../node').print_node
-const ListNode = require('../node').ListNode
-const creat_node = require('../node').creat_node
+const print_node = require('./ListNode').print_node
+const ListNode = require('./ListNode').ListNode
+const creat_node = require('./ListNode').creat_node
 
 
 
@@ -24,8 +24,8 @@ var isPalindrome = function(head) {
     let tmp1 = head;
     let flag = true;
 
-    while(tmp){
-        if(tmp.val != tmp1.val) {
+    while (tmp) {
+        if (tmp.val != tmp1.val) {
             flag = false;
             break;
         }
@@ -45,8 +45,7 @@ var halfNode = function(head) {
     let fast = head;
     let slow = head;
 
-    while(fast && fast.next){
-
+    while (fast && fast.next) {
         fast = fast.next.next;
         slow = slow.next;
     }
@@ -55,12 +54,12 @@ var halfNode = function(head) {
 }
 
 var reverseList = function(head) {
-    if(head === null || head.mext === null) return head;
+    if (head === null || head.mext === null) return head;
 
     let new_head = null;
 
     //头插法，每次遍历到一个节点，就插入到头部
-    while(head){
+    while (head) {
         let tmp = head.next;
         head.next = new_head;
         new_head = head;
@@ -72,7 +71,7 @@ var reverseList = function(head) {
 };
 
 
-let l1 = creat_node([1,2,3,2,1,5,6,7]);
+let l1 = creat_node([1, 2, 3, 2, 1]);
 let result = isPalindrome(l1);
 console.log(result);
 

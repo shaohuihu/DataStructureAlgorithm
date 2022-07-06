@@ -1,7 +1,7 @@
 
-const print_node = require('../node').print_node
-const ListNode = require('../node').ListNode
-const creat_node = require('../node').creat_node
+const print_node = require('./ListNode').print_node
+const ListNode = require('./ListNode').ListNode
+const creat_node = require('./ListNode').creat_node
 
 
 
@@ -16,7 +16,7 @@ var reverseList1 = function(head) {
     let new_head = null;
 
     //头插法，每次遍历到一个节点，就插入到头部
-    while(head){
+    while (head) {
         let tmp = head.next;
         head.next = new_head;
         new_head = head;
@@ -43,7 +43,7 @@ var reverseList = function(head){
 
 
 
-let l1 = creat_node([0,8,8,8,8,2,9,3,1,1]);
+let l1 = creat_node([0, 8, 8, 8, 8, 2, 9, 3, 1, 1]);
 print_node(reverseList1(l1));
 
 

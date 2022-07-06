@@ -1,7 +1,7 @@
 
-const print_node = require('../node').print_node
-const ListNode = require('../node').ListNode
-const creat_node = require('../node').creat_node
+const print_node = require('./ListNode').print_node
+const ListNode = require('./ListNode').ListNode
+const creat_node = require('./ListNode').creat_node
 
 
 
@@ -19,8 +19,8 @@ var removeElements = function(head, val) {
     let dummy = new ListNode(undefined,head);  //构造一个dummy节点，来串连head节点
     let new_head = dummy;  //记录这个头结点，返回next 就是串联好的节点
 
-    while(dummy){
-        while(dummy.next && dummy.next.val === val){
+    while (dummy) {
+        while (dummy.next && dummy.next.val === val) {
             dummy.next = dummy.next.next;
         }
         dummy = dummy.next;
@@ -29,7 +29,7 @@ var removeElements = function(head, val) {
 };
 
 
-let l1 = creat_node([1,1,1,1]);
+let l1 = creat_node([1, 1, 1, 2]);
 print_node(removeElements(l1,1));
 
 
