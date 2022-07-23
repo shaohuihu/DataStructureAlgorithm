@@ -8,7 +8,7 @@ function select_sort(data)
 {
     for (let end = data.length; end > 0; end--) {
         let max = 0; //每次默认 0 为当前最大值
-        for(let begin = 0; begin < end; begin++){
+        for (let begin = 0; begin < end; begin++) {
             if(data[max] < data[begin]) max = begin
         }
         let tmp = data[end-1];

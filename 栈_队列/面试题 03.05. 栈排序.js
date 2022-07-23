@@ -22,13 +22,13 @@ SortedStack.prototype.push = function(val) {
     //每次push的时候都要比较
 
     //如果为空直接push
-    if(this.isEmpty()) {
+    if (this.isEmpty()) {
         this.stack.push(val);
         return;
     }
 
     //如果不为空进行比较
-    while(!this.isEmpty() &&(this.peek() < val)){
+    while (!this.isEmpty() && (this.peek() < val)) {
         this.tmp.push(this.pop());
     }
 
@@ -37,7 +37,7 @@ SortedStack.prototype.push = function(val) {
 
 
     //把小的的元素入栈
-    while(this.tmp.length > 0){
+    while (this.tmp.length > 0) {
         this.stack.push(this.tmp.pop());
     }
 };
@@ -53,7 +53,7 @@ SortedStack.prototype.pop = function() {
  * @return {number}
  */
 SortedStack.prototype.peek = function() {
-    if(this.isEmpty()) return -1;
+    if (this.isEmpty()) return -1;
     return this.stack[this.stack.length - 1];
 };
 

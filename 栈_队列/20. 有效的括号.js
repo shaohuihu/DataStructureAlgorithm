@@ -1,3 +1,4 @@
+
 /** https://leetcode.cn/problems/valid-parentheses/
  * 
  * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
@@ -14,8 +15,8 @@
  var isValid = function(s) {
     
     let statck1 = [];
-    for(let i = 0 ;i < s.length;i++){
-        if(s[i] === "(" || s[i] === "[" || s[i] === "{"){
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "(" || s[i] === "[" || s[i] === "{") {
             statck1.push(s[i]);
         } else {
 

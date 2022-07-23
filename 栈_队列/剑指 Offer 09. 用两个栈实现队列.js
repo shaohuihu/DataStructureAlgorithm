@@ -20,18 +20,18 @@ CQueue.prototype.appendTail = function(value) {
  */
 CQueue.prototype.deleteHead = function() {
     //取出最早的元素  先把stack1的元素
-    if(this.stack1.length === 0) return -1;
+    if (this.stack1.length === 0) return -1;
     
 
     //这里说明元素大于1
-    while(this.stack1.length > 1){
+    while (this.stack1.length > 1) {
         this.stack2.push(this.stack1.pop());
     }
 
     let delete_value = this.stack1.pop(); //弹出栈底的那个元素,并记录需要返回
 
     // 将stack2中的元素还原回来
-    while(this.stack2.length > 0){
+    while (this.stack2.length > 0) {
         this.stack1.push(this.stack2.pop());
     }
 

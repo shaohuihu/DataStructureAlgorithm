@@ -24,16 +24,16 @@
     let number = 0;
 
 
-    for(let i = 0; i < s.length; i++){
+    for (let i = 0; i < s.length; i++) {
         let charc = s[i];
         
-        if(charc >= '0' && charc <= '9'){
+        if (charc >= '0' && charc <= '9') {
             number = number * 10 + parseInt(charc);
             flag = true;
 
         } else {
             //遇到不是数字的字符，数字入栈,并清空结果
-            if(flag){
+            if (flag) {
                 number_stack.push(number);
                 number = 0;
                 flag = false;
@@ -104,13 +104,73 @@ var calculate_number = function(left,operator,right)
 }
 
 
-console.log(calculate(" 42 * 5 + 89 / 2  "));
+
+function isCalculate(s) 
+{
+    if (s === "+" || s === "-" || s === "*" || s === "/" ) return true;
+    return false;
+}
+
+
+//我们记录数字的一个栈即可，遇到‘+’、‘-’时候直接入栈（‘-’时候要是负数），遇到‘*’、‘/‘优先级高的出栈一个数运算在加入栈；
+//最后栈中剩下的全部相加即可
+
+var calculate1 = function(s) {
+    //先把所有的空格去掉
+    s = s.replace(/\s*/g,"");
+    console.log(s);
+
+    let data_stack = [];
+
+    let flag = "+";
+
+    let number = 0;
+    for (let index = 0; index < s.length; index++) {
+        let charc = s[index];
+        if (charc >= '0' && charc <= '9') {
+            number = number * 10 + parseInt(charc);
+        }
+
+
+        if (isCalculate(charc) || index === s.length - 1) { 
+            switch (flag) {
+                case "+":
+                    //直接入栈
+                    data_stack.push(number);
+                    break;
+                case "-":
+                    //负数入栈
+                    data_stack.push(-number);
+                    break;
+                case "*":
+                    data_stack.push(data_stack.pop() * number);
+                    break;
+                case "/":
+                    data_stack.push(parseInt(data_stack.pop() / number));
+                default:
+                    break;
+            }
+
+            flag = charc;
+            number = 0;
+        }
+    }
+
+    while (data_stack.length > 0) {
+        number += data_stack.pop();
+    }
+
+    return number;
+        
+}
+
+
+
+console.log(calculate1(" 42 * 5 + 89 / 2  "));
 console.log(calculate(" 6 * 5 * 2 "));
 console.log(calculate(" 1 - 1 + 1 "));
 console.log(calculate(" 0 * 1 + 5 "));
 console.log(calculate("1+2*5/3+6/4*2"));
-
-//calculate("1 + 5 + 2");
 
 
 

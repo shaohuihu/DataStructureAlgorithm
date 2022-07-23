@@ -28,17 +28,14 @@ stackNum表示栈下标，value表示压入的值。
  */
 TripleInOne.prototype.push = function(stackNum, value) {
 
-
     //找到数组中的实际索引 begin 和 end  从 begin 开始存放   end如果有值，说明栈满
     let begin_index = this.getBegin(stackNum);
     let end_index = this.getEnd(stackNum);
 
-    if(this.list[end_index] !== undefined) return; //栈满
-
-
+    if (this.list[end_index] !== undefined) return; //栈满
     //将数据放入合适的位置
-    for(let i = begin_index;i <= end_index;i++){
-        if(this.list[i] === undefined){
+    for (let i = begin_index;i <= end_index;i++) {
+        if (this.list[i] === undefined) {
             this.list[i] = value;
             break;
         }
@@ -53,18 +50,16 @@ TripleInOne.prototype.push = function(stackNum, value) {
  */
 TripleInOne.prototype.pop = function(stackNum) {
 
-    if(this.isEmpty(stackNum)) return -1;
+    if (this.isEmpty(stackNum)) return -1;
 
     let begin_index = this.getBegin(stackNum);
     let end_index = this.getEnd(stackNum);
     
-
-
     let pop_value;
 
     //从end 开始遍历，不为空的那个数设置成null
-    for(let i = end_index;i >= begin_index;i--){
-        if(this.list[i] !== undefined){
+    for (let i = end_index;i >= begin_index;i--) {
+        if (this.list[i] !== undefined) {
             pop_value = this.list[i]
             this.list[i] = undefined;
             break;
@@ -85,8 +80,8 @@ TripleInOne.prototype.peek = function(stackNum) {
     let end_index = this.getEnd(stackNum);
 
       //从end 开始遍历，不为空的那个数就是栈顶元素
-      for(let i = end_index;i >= begin_index;i--){
-        if(this.list[i] !== undefined){
+      for (let i = end_index; i >= begin_index; i--) {
+        if (this.list[i] !== undefined) {
            return this.list[i];
         }
     }
@@ -101,7 +96,7 @@ TripleInOne.prototype.peek = function(stackNum) {
  */
 TripleInOne.prototype.isEmpty = function(stackNum) {
     let begin_index = this.getBegin(stackNum);
-    if(this.list[begin_index] === undefined) return true; 
+    if (this.list[begin_index] === undefined) return true; 
     return false;
 };
 

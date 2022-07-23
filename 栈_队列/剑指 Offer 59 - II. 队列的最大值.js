@@ -33,30 +33,29 @@ MaxQueue.prototype.max_value = function() {
  * @return {void}
  */
 MaxQueue.prototype.push_back = function(value) {
-    
 
     this.queue.push(value);
-
-    while(this.queue_max.length > 0 && this.queue_max[this.queue_max.length - 1] < value){
-        this.queue_max.pop();
+    if (this.queue_max.length === 0) {
+        this.queue_max.push(value);
+    } else {
+        while (this.queue_max[this.queue_max.length - 1] < value) {
+            this.queue_max.pop();
+        }
+        this.queue_max.push(value);
+        
     }
-    this.queue_max.push(value);
 };
 
 /**
  * @return {number}
  */
 MaxQueue.prototype.pop_front = function() {
-
     if(this.queue.length <= 0) return -1;
-
     let head = this.queue.shift();
-
-    //判断最大值队列是否需要出队
+    
     if (head === this.queue_max[0]){
         this.queue_max.shift();//队头出队
     }
-
     return head;
 
 };
@@ -68,9 +67,6 @@ obj.push_back(2)
 console.log(obj.max_value());
 
 obj.pop_front();
-
-
-
 
 console.log(obj.max_value());
 obj.pop_front()
