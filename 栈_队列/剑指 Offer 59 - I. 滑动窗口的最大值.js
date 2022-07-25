@@ -62,25 +62,40 @@ var maxSlidingWindow = function(nums, k) {
     return result;
 };
 
-
-
 var maxSlidingWindow1= function(nums, k) {
 
-    let result = []; //结果数组
-    
-    for (let ri = 0; ri < nums.length; ri++) {
-        let maxIndex = ri;
-        for (let i = ri + 1 ; i < ri + k - 1; i++) {
-            if (nums[maxIndex] <= nums[i]) maxIndex = i; 
-        }
-        
-
-    } 
-    return result;
+    if (k == 1) return nums;
+    	
+    let maxes = new Array(nums.length - k + 1);
+    // 当前滑动窗口的最大值索引
+    let maxIdx = 0;
+    // 求出前k个元素的最大值索引
+    for (let i = 1; i < k; i++) {
+		if (nums[i] > nums[maxIdx]) maxIdx = i;
+	}
+    	
+    // li是滑动窗口的最左索引
+    for (let li = 0; li < maxes.length; li++) {
+    	// ri是滑动窗口的最右索引
+		let ri = li + k - 1;
+		if (maxIdx < li) { // 最大值的索引不在滑动窗口的合理范围内
+			// 求出[li, ri]范围内最大值的索引
+			maxIdx = li;
+			for (let i = li + 1; i <= ri; i++) {
+				if (nums[i] > nums[maxIdx]) maxIdx = i;
+			}
+		} else if (nums[ri] >= nums[maxIdx]) { // 最大值的索引在滑动窗口的合理范围内
+				maxIdx = ri;
+			}
+			maxes[li] = nums[maxIdx];
+		}
+    	
+    	return maxes;
+    	
 };
 
 
 let  nums = [1, 3, -1, -3, 5, 3, 6, 7];
 let  k = 3;
-let res = maxSlidingWindow(nums,k);
+let res = maxSlidingWindow1(nums,k);
 console.log(res);
